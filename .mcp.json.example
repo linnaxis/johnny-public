@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "johnny": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/absolute/path/to/johnny-compressor/dist/index.js"],
+      "env": {
+        "OLLAMA_BASE_URL": "http://127.0.0.1:11434",
+        "JOHNNY_MODEL": "johnny"
+      }
+    }
+  }
+}
