@@ -1,7 +1,6 @@
 {
   "mcpServers": {
     "johnny": {
-      "type": "stdio",
       "command": "node",
       "args": ["/absolute/path/to/johnny-compressor/dist/index.js"],
       "env": {

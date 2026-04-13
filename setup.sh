@@ -83,7 +83,19 @@ else
   fi
 fi
 
-# --- 4. Add shell alias ---
+# --- 4. Install dependencies and build MCP server ---
+info "Installing npm dependencies..."
+if command -v node &>/dev/null; then
+  cd "$SCRIPT_DIR"
+  npm install --silent 2>/dev/null && ok "Dependencies installed."
+  info "Building MCP server..."
+  npm run build --silent 2>/dev/null && ok "MCP server built (dist/index.js)."
+else
+  warn "Node.js not found — skipping MCP server build."
+  echo "  Install Node.js 18+ to use the MCP server for Claude Code."
+fi
+
+# --- 5. Done ---
 info "Setup complete!"
 echo ""
 echo -e "${BOLD}Usage:${NC}"
@@ -107,5 +119,5 @@ echo "  source ~/.zshrc"
 echo ""
 echo "  Then use: jc \"your verbose prompt\""
 echo ""
-echo -e "${BOLD}For OpenClaw integration, see:${NC} https://github.com/linnaxis/johnny-openclaw"
+echo -e "${BOLD}For OpenClaw integration, see:${NC} https://github.com/linnaxis/johnny-compressor-openclaw"
 echo ""

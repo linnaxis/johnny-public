@@ -1,7 +1,7 @@
 # Johnny
 
 <p align="center">
-  <img src="jonhnny.png" alt="Johnny" width="400">
+  <img src="johnny.png" alt="Johnny" width="400">
 </p>
 
 Local prompt compression via [Ollama](https://ollama.com). Compresses verbose natural-language prompts into minimal shorthand tokens, reducing API input costs by 60-90%.
@@ -55,6 +55,7 @@ cd johnny-compressor
 The setup script will:
 1. Verify Ollama is installed (start it if not running)
 2. Create the `johnny` model from the Modelfile
+3. Install npm dependencies and build the MCP server
 
 Safe to re-run (idempotent).
 
@@ -85,13 +86,12 @@ npm run build
 
 ### 2. Configure
 
-Add to your `~/.mcp.json` (or merge into existing):
+Add to your `~/.claude/mcp.json` (or merge into existing):
 
 ```json
 {
   "mcpServers": {
     "johnny": {
-      "type": "stdio",
       "command": "node",
       "args": ["/absolute/path/to/johnny-compressor/dist/index.js"],
       "env": {
